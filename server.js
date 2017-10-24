@@ -58,7 +58,6 @@ app.get("/scrape", (req, res) => {
       }
     });
   });
-  res.redirect("/");
 });
 
 app.listen(PORT, () => {
