@@ -1,0 +1,13 @@
+body {
+  padding-top: 5rem;
+}
+
+#header {
+  background-color: #353b40;
+  color: white;
+}
+
+.btn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
