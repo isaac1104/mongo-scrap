@@ -40,8 +40,8 @@ app.get("/scrape", (req, res) => {
   request("https://www.nytimes.com/section/sports/basketball", (error, response, html) => {
     const $ = cheerio.load(html);
     $(".story-meta").each((i, element) => {
-      const title = $(element).children(".headline").text();
-      const summary = $(element).children(".summary").text();
+      const title = $(element).children(".headline").text().trim();
+      const summary = $(element).children(".summary").text().trim();
 
       if (title && summary) {
         db.scrapedData.insert({
