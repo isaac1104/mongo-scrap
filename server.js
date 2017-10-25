@@ -32,7 +32,7 @@ db.on("error", (error) => {
   console.log(`Database Error: ${error}`);
 });
 
-app.get("/all", (req, res) => {
+app.get("/api", (req, res) => {
   db.scrapedData.find({}, (error, data) => {
     if (error) {
       return console.log(error);
@@ -49,12 +49,14 @@ app.get("/scrape", (req, res) => {
       const title = $(element).children(".headline").text().trim();
       const summary = $(element).children(".summary").text().trim();
       const link = $(element).parent(".story-link").attr("href");
+      const image = $(element).siblings(".wide-thumb").children("img").attr("src");
 
       if (title && summary) {
         db.scrapedData.insert({
           title,
           summary,
-          link
+          link,
+          image
         }, function(err, data) {
           if (err) {
             console.log(err);
@@ -62,6 +64,13 @@ app.get("/scrape", (req, res) => {
             console.log(data);
           }
         });
+      }
+    });
+    db.scrapedData.find({}, (error, data) => {
+      if (error) {
+        return console.log(error);
+      } else {
+        res.redirect("/");
       }
     });
   });

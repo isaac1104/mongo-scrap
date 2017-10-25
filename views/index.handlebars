@@ -19,15 +19,15 @@
   <a class="navbar-brand" href="/"><h1>Mongo Scraper</h1></a>
   <div>
     <a href="/"><button class="btn btn-primary" type="button" name="button">Home</button></a>
-    <a href="/all"><button class="btn btn-success" type="button" name="button">Saved Articles</button></a>
-    <a href="/scrape"><button id="scrape-btn" class="btn btn-danger" type="button" name="button" data-toggle="modal" data-target="#modal">Scrap New Articles</button></a>
+    <a href="/scrape"><button id="scrape-btn" class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#modal">Scrap New Articles</button></a>
+    <a href="/delete"><button class="btn btn-danger" type="button" name="button">Delete Articles</button></a>
   </div>
 </nav>
 
 <!--JUMBOTRON-->
 <div class="jumbotron text-center">
   <h1>Mongo Scraper</h1>
-  <h5>New York Times Edition</h5>
+  <h5>New York Times NBA Edition</h5>
 </div>
 
 <!--MAIN CONTENT-->
@@ -35,9 +35,11 @@
   <div class="row container-fluid">
     {{#each data}}
       <div class="container article-div">
-        <h3>{{this.title}}</h3>
-        <h5>{{this.summary}}</h5>
-        <h6>{{this.link}}</h6>
+        <a href= {{this.link}} target="_blank"><img class="article-image" src={{this.image}} alt="article-image"></a>
+        <div>
+          <h3>{{this.title}}</h3>
+          <h5>{{this.summary}}</h5>
+        </div>
       </div>
     {{/each}}
   </div>

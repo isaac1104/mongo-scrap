@@ -27,6 +27,13 @@ body {
 }
 
 .article-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border: 2px #353b40 solid;
   margin-bottom: 30px;
+}
+
+.article-image {
+  margin-left: -15px;
 }
