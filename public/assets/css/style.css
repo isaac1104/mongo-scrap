@@ -6,6 +6,10 @@ body {
   padding-top: 4.8rem;
 }
 
+a {
+  color: red;
+}
+
 #header {
   background-color: #353b40;
   color: white;

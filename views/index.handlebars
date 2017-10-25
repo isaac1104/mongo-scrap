@@ -1,13 +1,10 @@
 <!--MODAL FOR NEW SCRAPE-->
 <div class="container">
-  <div class="modal fade" id="modal" role="dialog">
+  <div class="modal fade" id="scrape-modal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
           <h2>Scraping Articles...</h2>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -16,14 +13,15 @@
 
 <!--MODAL FOR DELETE CONFIRMATION-->
 <div class="container">
-  <div class="modal fade" id="modal" role="dialog">
+  <div class="modal fade" id="delete-modal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <h2>Scraping Articles...</h2>
+          <h2>Are you sure you want to delete scraped articles? (This action cannot be undone)</h2>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+          <a href="/delete" type="button" class="btn">Delete</a>
         </div>
       </div>
     </div>
@@ -35,8 +33,8 @@
   <a class="navbar-brand" href="/"><h1>Mongo Scraper</h1></a>
   <div>
     <a href="/"><button class="btn btn-primary" type="button" name="button">Home</button></a>
-    <a href="/scrape"><button id="scrape-btn" class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#modal">Scrap New Articles</button></a>
-    <a href="/delete"><button class="btn btn-danger" type="button" name="button">Delete Articles</button></a>
+    <a href="/scrape"><button id="scrape-btn" class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#scrape-modal">Scrap New Articles</button></a>
+    <button id="delete-btn" class="btn btn-danger" type="button" name="button" data-toggle="modal" data-target="#delete-modal">Delete Articles</button>
   </div>
 </nav>
 
