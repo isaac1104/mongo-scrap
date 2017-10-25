@@ -76,6 +76,17 @@ app.get("/scrape", (req, res) => {
   });
 });
 
+app.get("/delete", (req, res) => {
+  db.scrapedData.drop({}, (error, data) => {
+    if (error) {
+      return console.log(error);
+    } else {
+      console.log("Articles Deleted");
+    }
+  });
+  return res.redirect("/");
+});
+
 app.listen(PORT, () => {
   console.log(`Server connected on ${PORT}`);
 });
