@@ -8,14 +8,20 @@ const app = express();
 const exphbs = require("express-handlebars");
 const path = require("path");
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public/assets"));
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 app.get("/", (req, res) => {
-  res.render("index.handlebars");
+  db.scrapedData.find({}, (error, data) => {
+    if (error) {
+      res.status(500).end();
+    } else {
+      res.render("index", {data});
+    }
+  })
 });
 
 const databaseUrl = "nyt-scraper";
@@ -42,13 +48,14 @@ app.get("/scrape", (req, res) => {
     $(".story-meta").each((i, element) => {
       const title = $(element).children(".headline").text().trim();
       const summary = $(element).children(".summary").text().trim();
+      const link = $(element).parent(".story-link").attr("href");
 
       if (title && summary) {
         db.scrapedData.insert({
           title,
-          summary
-        },
-        function(err, data) {
+          summary,
+          link
+        }, function(err, data) {
           if (err) {
             console.log(err);
           } else {

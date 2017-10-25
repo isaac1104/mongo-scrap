@@ -25,3 +25,8 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+.article-div {
+  border: 2px #353b40 solid;
+  margin-bottom: 30px;
+}

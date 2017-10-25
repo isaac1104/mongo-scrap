@@ -32,8 +32,13 @@
 
 <!--MAIN CONTENT-->
 <div id="articles" class="text-center">
-  {{#each scrapedData}}
-    <p>{{this.title}}</p>
-    <p>{{this.summary}}</p>
-  {{/each}}
+  <div class="row container-fluid">
+    {{#each data}}
+      <div class="container article-div">
+        <h3>{{this.title}}</h3>
+        <h5>{{this.summary}}</h5>
+        <h6>{{this.link}}</h6>
+      </div>
+    {{/each}}
+  </div>
 </div>
